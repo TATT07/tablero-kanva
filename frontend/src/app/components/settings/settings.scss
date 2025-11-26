@@ -1,0 +1,124 @@
+.settings {
+  padding: 2rem;
+  background: #000000 !important;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+.settings__header {
+  margin-bottom: 2rem;
+}
+
+.settings__header h2 {
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+}
+
+.text-muted {
+  color: #cbd5e1 !important;
+}
+
+.settings__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.settings-card {
+  background: #11131a;
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.55);
+}
+
+.settings-card h3 {
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+}
+
+.settings-card p {
+  margin: 0 0 1.5rem 0;
+}
+
+.btn-primary,
+.btn-outline {
+  padding: 0.6rem 1.3rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #7b5cff, #9c7bff);
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(123, 92, 255, 0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #7b5cff;
+  border: 2px solid #7b5cff;
+}
+
+.btn-outline:hover {
+  background: rgba(123, 92, 255, 0.1);
+}
+
+/* Perfil de usuario */
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.profile-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7b5cff, #9c7bff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.profile-details h3 {
+  margin: 0 0 0.25rem 0;
+  color: #ffffff;
+}
+
+/* Estado de notificaciones */
+.notification-status {
+  margin-bottom: 1.5rem;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #666;
+  transition: background-color 0.3s ease;
+}
+
+.status-dot.active {
+  background: #10b981;
+}

@@ -1,0 +1,23 @@
+<div class="confirm-dialog">
+  <div class="dialog-header">
+    <mat-icon class="warning-icon">warning</mat-icon>
+    <h2 class="dialog-title">Confirmar eliminación</h2>
+  </div>
+
+  <div class="dialog-body">
+    <p>¿Desea eliminar esta tarea?</p>
+    <p class="task-title">{{ data.taskTitle }}</p>
+  </div>
+
+  <div class="dialog-actions">
+    <button mat-stroked-button class="cancel-btn" (click)="onCancel()">
+      <mat-icon>close</mat-icon>
+      Cancelar
+    </button>
+
+    <button mat-flat-button class="delete-btn" (click)="onConfirm()">
+      <mat-icon>delete</mat-icon>
+      Eliminar
+    </button>
+  </div>
+</div>

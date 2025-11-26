@@ -1,0 +1,152 @@
+.analytics {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 0;
+  background: transparent !important;
+  color: #ffffff;
+  width: 100%;
+}
+
+.analytics__header h2 {
+  margin: 0 0 0.25rem;
+  color: #ffffff;
+}
+
+.analytics__header p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+.analytics__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.analytics-card {
+  background: #11131a;
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.55);
+}
+
+.analytics-card h3 {
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+}
+
+.analytics-card__value {
+  margin: 0.4rem 0 0.25rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.analytics-card p {
+  color: #cbd5e1;
+}
+
+.analytics-card--placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.analytics-card__icon {
+  margin-bottom: 1rem;
+}
+
+.analytics-card__icon mat-icon {
+  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+  color: #7b5cff;
+}
+
+.analytics__chart {
+  margin-top: 2rem;
+}
+
+.analytics__chart h3 {
+  color: #ffffff;
+  margin: 0 0 1.5rem 0;
+}
+
+.chart-container {
+  background: #11131a;
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.55);
+}
+
+.chart-bar {
+  display: flex;
+  height: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.chart-bar__segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  position: relative;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.chart-bar__segment--todo {
+  background: #f59e0b;
+}
+
+.chart-bar__segment--progress {
+  background: #3b82f6;
+}
+
+.chart-bar__segment--done {
+  background: #10b981;
+}
+
+.chart-legend {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-color--todo {
+  background: #f59e0b;
+}
+
+.legend-color--progress {
+  background: #3b82f6;
+}
+
+.legend-color--done {
+  background: #10b981;
+}

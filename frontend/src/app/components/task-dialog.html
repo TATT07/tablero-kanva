@@ -1,0 +1,83 @@
+<div class="task-modal">
+
+  <!-- HEADER -->
+  <div class="modal-header">
+    <div class="header-icon">
+      <mat-icon>{{ isEdit ? 'edit' : 'add' }}</mat-icon>
+    </div>
+
+    <div class="header-content">
+      <h1 class="modal-title">
+        {{ isEdit ? 'Editar Tarea' : 'Crear Nueva Tarea' }}
+      </h1>
+      <p class="modal-subtitle">
+        {{ isEdit ? 'Actualiza esta tarea' : 'Agrega una nueva tarea a tu tablero Kanban' }}
+      </p>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="modal-body">
+    <form [formGroup]="taskForm" class="task-form">
+
+      <!-- INFORMACIÓN PRINCIPAL -->
+      <div class="form-section">
+        <h3 class="section-title">Información Principal</h3>
+
+        <mat-form-field appearance="outline" class="title-field">
+          <mat-label>Título de la Tarea</mat-label>
+          <input matInput formControlName="title" placeholder="¿Qué necesitas hacer?">
+          <mat-error *ngIf="taskForm.get('title')?.hasError('required')">
+            Este campo es obligatorio.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- DETALLES -->
+      <div class="form-section">
+        <h3 class="section-title">Detalles Adicionales</h3>
+
+        <mat-form-field appearance="outline" class="description-field">
+          <mat-label>Descripción (opcional)</mat-label>
+          <textarea matInput formControlName="description" rows="3"></textarea>
+        </mat-form-field>
+      </div>
+
+      <!-- CONFIGURACIÓN -->
+      <div class="form-section">
+        <h3 class="section-title">Configuración</h3>
+
+        <div class="config-grid">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Estado Inicial</mat-label>
+            <mat-select formControlName="status">
+              <mat-option value="ToDo">Por hacer</mat-option>
+              <mat-option value="InProgress">En progreso</mat-option>
+              <mat-option value="Done">Completada</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Posición</mat-label>
+            <input matInput type="number" formControlName="position" min="0">
+          </mat-form-field>
+
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="modal-footer">
+    <button mat-stroked-button class="cancel-button" (click)="onCancel()">
+      Cancelar
+    </button>
+
+    <button mat-flat-button class="submit-button" (click)="onSubmit()" [disabled]="!taskForm.valid">
+      {{ isEdit ? 'Guardar Cambios' : 'Crear Tarea' }}
+    </button>
+  </div>
+
+</div>

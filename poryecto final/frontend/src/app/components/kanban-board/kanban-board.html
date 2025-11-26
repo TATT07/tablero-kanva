@@ -1,0 +1,151 @@
+<div class="kanban-container">
+
+  <!-- HEADER -->
+  <div class="kanban-header">
+    <div class="kanban-header-content">
+      <h1>Tablero Kanban</h1>
+      <p>Gestiona tus tareas arrastrando tarjetas entre columnas.</p>
+    </div>
+
+    <button class="btn-primary" (click)="addTask()">
+      Nueva Tarea
+    </button>
+  </div>
+
+  <!-- BOARD -->
+  <div class="kanban-board">
+
+    <!-- TODO -->
+    <section class="kanban-column">
+      <header class="column-header column-header--todo">
+        <span class="board-column__dot board-column__dot--amber">{{ todoCount }} POR HACER</span>
+      </header>
+
+      <div
+        cdkDropList
+        id="todo-list"
+        [cdkDropListData]="todoTasks"
+        [cdkDropListConnectedTo]="getConnectedLists()"
+        class="task-list"
+        (cdkDropListDropped)="onDrop($event)"
+      >
+        <div
+          class="kanban-task-card"
+          *ngFor="let task of todoTasks; trackBy: trackByTaskId"
+          cdkDrag
+          [cdkDragData]="task"
+        >
+          <div class="kanban-task-header">
+            <div class="kanban-task-title">{{ task.title }}</div>
+            <div class="kanban-task-actions">
+              <button mat-icon-button class="action-btn action-btn--view" (click)="viewTask(task); $event.stopPropagation()" title="Ver detalles">
+                👁️
+              </button>
+              <button mat-icon-button class="action-btn action-btn--edit" (click)="editTask(task); $event.stopPropagation()" title="Editar">
+                ✏️
+              </button>
+              <button mat-icon-button class="action-btn action-btn--delete" (click)="deleteTask(task); $event.stopPropagation()" title="Eliminar">
+                🗑️
+              </button>
+            </div>
+          </div>
+          <div class="kanban-task-desc">{{ task.description || 'Sin descripción' }}</div>
+        </div>
+
+        <!-- Placeholder for empty list -->
+        <div *ngIf="todoTasks.length === 0" class="empty-drop-zone">
+          Suelta aquí las tareas por hacer
+        </div>
+      </div>
+    </section>
+
+    <!-- IN PROGRESS -->
+    <section class="kanban-column">
+      <header class="column-header column-header--progress">
+        <span class="board-column__dot board-column__dot--blue">{{ inProgressCount }} EN PROGRESO</span>
+      </header>
+
+      <div
+        cdkDropList
+        id="inprogress-list"
+        [cdkDropListData]="inProgressTasks"
+        [cdkDropListConnectedTo]="getConnectedLists()"
+        class="task-list"
+        (cdkDropListDropped)="onDrop($event)"
+      >
+        <div
+          class="kanban-task-card"
+          *ngFor="let task of inProgressTasks; trackBy: trackByTaskId"
+          cdkDrag
+          [cdkDragData]="task"
+        >
+          <div class="kanban-task-header">
+            <div class="kanban-task-title">{{ task.title }}</div>
+            <div class="kanban-task-actions">
+              <button mat-icon-button class="action-btn action-btn--view" (click)="viewTask(task); $event.stopPropagation()" title="Ver detalles">
+                👁️
+              </button>
+              <button mat-icon-button class="action-btn action-btn--edit" (click)="editTask(task); $event.stopPropagation()" title="Editar">
+                ✏️
+              </button>
+              <button mat-icon-button class="action-btn action-btn--delete" (click)="deleteTask(task); $event.stopPropagation()" title="Eliminar">
+                🗑️
+              </button>
+            </div>
+          </div>
+          <div class="kanban-task-desc">{{ task.description || 'Sin descripción' }}</div>
+        </div>
+
+        <!-- Placeholder for empty list -->
+        <div *ngIf="inProgressTasks.length === 0" class="empty-drop-zone">
+          Suelta aquí las tareas en progreso
+        </div>
+      </div>
+    </section>
+
+    <!-- DONE -->
+    <section class="kanban-column">
+      <header class="column-header column-header--done">
+        <span class="board-column__dot board-column__dot--green">{{ doneCount }} COMPLETADAS</span>
+      </header>
+
+      <div
+        cdkDropList
+        id="done-list"
+        [cdkDropListData]="doneTasks"
+        [cdkDropListConnectedTo]="getConnectedLists()"
+        class="task-list"
+        (cdkDropListDropped)="onDrop($event)"
+      >
+        <div
+          class="kanban-task-card"
+          *ngFor="let task of doneTasks; trackBy: trackByTaskId"
+          cdkDrag
+          [cdkDragData]="task"
+        >
+          <div class="kanban-task-header">
+            <div class="kanban-task-title">{{ task.title }}</div>
+            <div class="kanban-task-actions">
+              <button mat-icon-button class="action-btn action-btn--view" (click)="viewTask(task); $event.stopPropagation()" title="Ver detalles">
+                👁️
+              </button>
+              <button mat-icon-button class="action-btn action-btn--edit" (click)="editTask(task); $event.stopPropagation()" title="Editar">
+                ✏️
+              </button>
+              <button mat-icon-button class="action-btn action-btn--delete" (click)="deleteTask(task); $event.stopPropagation()" title="Eliminar">
+                🗑️
+              </button>
+            </div>
+          </div>
+          <div class="kanban-task-desc">{{ task.description || 'Sin descripción' }}</div>
+        </div>
+
+        <!-- Placeholder for empty list -->
+        <div *ngIf="doneTasks.length === 0" class="empty-drop-zone">
+          Suelta aquí las tareas completadas
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>

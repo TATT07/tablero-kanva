@@ -1,0 +1,127 @@
+<div class="task-dialog-header">
+  <div class="task-dialog-icon">
+    <mat-icon>{{ isEdit ? 'edit' : 'add_task' }}</mat-icon>
+  </div>
+  <div class="task-dialog-title-section">
+    <h2 class="task-dialog-title">{{ isEdit ? 'Editar Tarea' : 'Crear Nueva Tarea' }}</h2>
+    <p class="task-dialog-subtitle">{{ isEdit ? 'Modifica los detalles de tu tarea' : 'Agrega una nueva tarea a tu tablero Kanban' }}</p>
+  </div>
+</div>
+
+<mat-dialog-content class="task-dialog-content">
+  <form [formGroup]="taskForm" class="task-form">
+
+    <!-- Título Section -->
+    <div class="form-section">
+      <div class="form-section-header">
+        <mat-icon class="section-icon">title</mat-icon>
+        <span class="section-title">Información Principal</span>
+      </div>
+
+      <mat-form-field appearance="outline" class="full-width title-field">
+        <mat-label>Título de la Tarea</mat-label>
+        <input matInput formControlName="title" placeholder="¿Qué tarea necesitas completar?" autocomplete="off">
+        <mat-icon matSuffix class="field-icon">edit_note</mat-icon>
+        <mat-hint>Ingresa un título claro y descriptivo</mat-hint>
+        <mat-error *ngIf="taskForm.get('title')?.hasError('required')">
+          <mat-icon>error</mat-icon>
+          El título es obligatorio
+        </mat-error>
+        <mat-error *ngIf="taskForm.get('title')?.hasError('maxlength')">
+          <mat-icon>error</mat-icon>
+          El título no puede exceder 100 caracteres
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Descripción Section -->
+    <div class="form-section">
+      <div class="form-section-header">
+        <mat-icon class="section-icon">description</mat-icon>
+        <span class="section-title">Detalles Adicionales</span>
+      </div>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Descripción (Opcional)</mat-label>
+        <textarea matInput formControlName="description"
+                  placeholder="Agrega más detalles sobre esta tarea..."
+                  rows="4"
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="3"
+                  cdkAutosizeMaxRows="6"></textarea>
+        <mat-icon matSuffix class="field-icon">notes</mat-icon>
+        <mat-hint>Describe los pasos o información adicional</mat-hint>
+        <mat-error *ngIf="taskForm.get('description')?.hasError('maxlength')">
+          <mat-icon>error</mat-icon>
+          La descripción no puede exceder 500 caracteres
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Configuración Section -->
+    <div class="form-section">
+      <div class="form-section-header">
+        <mat-icon class="section-icon">settings</mat-icon>
+        <span class="section-title">Configuración</span>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Estado Inicial</mat-label>
+          <mat-select formControlName="status">
+            <mat-option *ngFor="let status of taskStatuses" [value]="status">
+              <div class="status-option">
+                <mat-icon class="status-icon" [ngClass]="'status-' + status.toString().toLowerCase()">
+                  {{ getStatusIcon(status.toString()) }}
+                </mat-icon>
+                <span>{{ getStatusLabel(status.toString()) }}</span>
+              </div>
+            </mat-option>
+          </mat-select>
+          <mat-icon matSuffix class="field-icon">flag</mat-icon>
+          <mat-hint>Selecciona el estado inicial de la tarea</mat-hint>
+          <mat-error *ngIf="taskForm.get('status')?.hasError('required')">
+            <mat-icon>error</mat-icon>
+            El estado es obligatorio
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Prioridad</mat-label>
+          <mat-select formControlName="priority">
+            <mat-option *ngFor="let priority of taskPriorities" [value]="priority">
+              <div class="priority-option">
+                <mat-icon class="priority-icon" [ngClass]="'priority-' + priority.toString().toLowerCase()">
+                  {{ getPriorityIcon(priority.toString()) }}
+                </mat-icon>
+                <span>{{ getPriorityLabel(priority.toString()) }}</span>
+              </div>
+            </mat-option>
+          </mat-select>
+          <mat-icon matSuffix class="field-icon">priority_high</mat-icon>
+          <mat-hint>Selecciona la prioridad de la tarea</mat-hint>
+          <mat-error *ngIf="taskForm.get('priority')?.hasError('required')">
+            <mat-icon>error</mat-icon>
+            La prioridad es obligatoria
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions class="task-dialog-actions">
+  <button mat-stroked-button (click)="onCancel()" class="cancel-btn">
+    <mat-icon>close</mat-icon>
+    Cancelar
+  </button>
+  <button mat-flat-button
+          (click)="onSubmit()"
+          [disabled]="!taskForm.valid"
+          class="submit-btn"
+          [class.edit-mode]="isEdit">
+    <mat-icon>{{ isEdit ? 'save' : 'add' }}</mat-icon>
+    {{ isEdit ? 'Guardar Cambios' : 'Crear Tarea' }}
+  </button>
+</mat-dialog-actions>

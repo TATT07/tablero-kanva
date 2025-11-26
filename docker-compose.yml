@@ -1,0 +1,54 @@
+services:
+  # Backend API
+  api:
+    build:
+      context: .
+      dockerfile: Kanban.API/Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:80
+      - Jwt__Key=${JWT_KEY:-your-super-secret-jwt-key-here-change-in-production}
+      - Jwt__Issuer=${JWT_ISSUER:-https://yourdomain.com}
+      - ConnectionStrings__DefaultConnection=${DATABASE_CONNECTION:-Host=db;Database=KanbanDb;Username=postgres;Password=YourStrong!Passw0rd}
+    depends_on:
+      - db
+    networks:
+      - kanban-network
+
+  # Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    environment:
+      - API_URL=${API_URL:-http://api:80}
+    depends_on:
+      - api
+    networks:
+      - kanban-network
+
+  # Database
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=KanbanDb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-YourStrong!Passw0rd}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./Kanban.API/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    networks:
+      - kanban-network
+
+volumes:
+  postgres_data:
+
+networks:
+  kanban-network:
+    driver: bridge

@@ -1,0 +1,103 @@
+<div class="task-detail-modal">
+
+  <!-- HEADER -->
+  <header class="modal-header">
+    <div class="header-icon">
+      <mat-icon>visibility</mat-icon>
+    </div>
+    <div class="header-content">
+      <h1 class="modal-title">Detalles de tarea</h1>
+      <p class="modal-subtitle">Información completa de la tarea</p>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <section class="modal-body" *ngIf="task">
+    <div class="task-details">
+
+      <!-- INFORMACIÓN PRINCIPAL -->
+      <section class="detail-section">
+        <h3 class="section-title">Información principal</h3>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <label>Título:</label>
+            <span>{{ task.title }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Descripción:</label>
+            <span>{{ task.description || 'Sin descripción' }}</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONFIGURACIÓN -->
+      <section class="detail-section">
+        <h3 class="section-title">Configuración</h3>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <label>Estado:</label>
+            <span>{{ getStatusLabel(task.status) }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Prioridad:</label>
+            <span>{{ getPriorityLabel(task.priority) }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Fecha límite:</label>
+            <span>{{ task.dueDate ? (task.dueDate | date:'dd/MM/yyyy') : 'Sin fecha' }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Posición:</label>
+            <span>{{ task.position }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Tags:</label>
+            <span>{{ task.tags || 'Sin tags' }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Comentarios:</label>
+            <span>{{ task.comments || 'Sin comentarios' }}</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- METADATOS -->
+      <section class="detail-section">
+        <h3 class="section-title">Información del sistema</h3>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <label>Creado:</label>
+            <span>{{ task.createdAt | date:'dd/MM/yyyy HH:mm' }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Actualizado:</label>
+            <span>{{ task.updatedAt | date:'dd/MM/yyyy HH:mm' }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Usuario:</label>
+            <span>{{ task.userName }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Asignado a:</label>
+            <span>{{ task.assignedToUserName || 'Sin asignar' }}</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="modal-footer">
+    <button mat-stroked-button class="cancel-button" (click)="onClose()">
+      <mat-icon>close</mat-icon>
+      Cerrar
+    </button>
+
+    <button mat-flat-button class="edit-button" (click)="onEdit()">
+      <mat-icon>edit</mat-icon>
+      Editar
+    </button>
+  </footer>
+
+</div>

@@ -1,0 +1,53 @@
+<div class="layout" *ngIf="isLoggedIn(); else loginTemplate">
+
+  <!-- SIDEBAR OVERLAY (Mobile) -->
+  <div class="sidebar-overlay" [class.active]="sidebarOpen" (click)="closeSidebarOnMobile()"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" [class.open]="sidebarOpen">
+    <!-- LOGO -->
+    <div class="sidebar__logo">
+      <span class="sidebar__logo-text">KanbanFlow</span>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="sidebar__nav">
+      <a routerLink="/dashboard" routerLinkActive="active" class="sidebar__item" (click)="closeSidebarOnMobile()">Panel de Control</a>
+      <a routerLink="/board" routerLinkActive="active" class="sidebar__item" (click)="closeSidebarOnMobile()">Tablero Kanban</a>
+      <a routerLink="/analytics" routerLinkActive="active" class="sidebar__item" (click)="closeSidebarOnMobile()">Análisis</a>
+    </nav>
+
+    <!-- USER BADGE -->
+    <div class="user-card">
+      <div class="user-card__header">
+        <div class="user-card__name">{{ getUserDisplayName() }}</div>
+        <div class="user-card__email">{{ currentUser()?.email }}</div>
+        <div class="user-card__role">{{ getUserRoleDisplay() }}</div>
+      </div>
+
+      <button mat-flat-button class="user-card__logout" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        Cerrar Sesión
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- MAIN AREA -->
+  <div class="layout__main">
+    <header class="topbar-minimal">
+      <button class="hamburger-menu" (click)="toggleSidebar()" aria-label="Toggle menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </header>
+
+    <main class="layout__content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+</div>
+
+<ng-template #loginTemplate>
+  <router-outlet></router-outlet>
+</ng-template>

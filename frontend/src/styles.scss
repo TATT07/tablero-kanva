@@ -1,0 +1,400 @@
+/* ============================
+     DARK MODE FINAL PRO
+============================= */
+
+/* Fondo global */
+html, body {
+  background: #000000 !important;
+  color: #e5e7eb !important;
+  font-family: "Inter", sans-serif !important;
+  margin: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* ============================
+       TOP BAR (HEADER NEGRO)
+============================= */
+
+.topbar {
+  background: #000000 !important;  /* NEGRO */
+  color: #ffffff !important;
+  border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15) !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 1rem 2rem !important;
+}
+
+/* ============================
+     NOTIFICACIONES (TOASTS)
+============================= */
+
+.notification-success {
+  background: #10b981 !important;
+  color: white !important;
+}
+
+.notification-error {
+  background: #ef4444 !important;
+  color: white !important;
+}
+
+.notification-warning {
+  background: #f59e0b !important;
+  color: white !important;
+}
+
+.notification-info {
+  background: #3b82f6 !important;
+  color: white !important;
+}
+
+/* ============================
+     SIDEBAR USER SECTION
+============================= */
+
+.sidebar__user {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: auto;
+}
+
+.logout-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  color: #cbd5e1 !important;
+}
+
+.logout-btn:hover {
+  color: #ef4444 !important;
+}
+
+/* Input de búsqueda */
+.topbar input {
+  background: #1a1a1a !important;
+  color: #ffffff !important;
+  border: 1px solid #333 !important;
+  border-radius: 8px !important;
+}
+
+/* Botón "Nueva Tarea" */
+.topbar button,
+.kanban-header button {
+  background: white !important;
+  color: #7b5cff !important;
+  border: 2px solid #7b5cff !important;
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+}
+
+/* ============================
+      SIDEBAR OSCURO
+============================= */
+
+.mat-sidenav {
+  background: #0d0f14 !important;
+  color: #e5e7eb !important;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.mat-list-item {
+  color: #d1d5db !important;
+}
+.mat-list-item:hover {
+  background: rgba(255,255,255,0.06) !important;
+}
+
+/* ============================
+   BLOQUES DEL DASHBOARD
+============================= */
+
+.dashboard-page {
+  background: #000000 !important;
+}
+
+.dashboard-block {
+  background: #11131a !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  border-radius: 18px !important;
+  padding: 1.6rem !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.55) !important;
+}
+
+.dashboard-title {
+  color: #ffffff !important;
+}
+
+.dashboard-subtitle {
+  color: #cbd5e1 !important;
+}
+
+/* ============================
+       MÉTRICAS
+============================= */
+
+.metric-card {
+  background: #11131a !important;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.55);
+}
+
+.metric-card__label {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 0.75rem !important;
+}
+
+.metric-card__value {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+  margin-left: 0.5rem !important;
+}
+
+.metric-card__description {
+  color: #cbd5e1 !important;
+  font-size: 0.8rem !important;
+}
+
+/* Ocultar textos solo en el DASHBOARD */
+.dashboard-page .metric-card__icon span {
+  font-size: 0 !important;
+  color: transparent !important;
+}
+
+/* Reemplazo de letras para el dashboard */
+.dashboard-page .metric-card__icon--total::after {
+  content: "TOTAL"; color: white; font-weight: 700;
+}
+.dashboard-page .metric-card__icon--todo::after {
+  content: "POR HACER"; color: white; font-weight: 700;
+}
+.dashboard-page .metric-card__icon--progress::after {
+  content: "EN PROGRESO"; color: white; font-weight: 700;
+}
+.dashboard-page .metric-card__icon--done::after {
+  content: "COMPLETADAS"; color: white; font-weight: 700;
+}
+
+/* Ocultar íconos en el módulo Análisis */
+.analytics .analytics-card__icon {
+  display: none !important;
+}
+
+/* ============================
+      BOTONES
+============================= */
+
+.btn-outline,
+.btn-primary {
+  border-radius: 12px !important;
+  padding: 0.6rem 1.3rem !important;
+  font-size: 0.85rem !important;
+}
+
+.btn-outline {
+  border: 1px solid #6366f1 !important;
+  color: #c7d2fe !important;
+}
+.btn-outline:hover {
+  background: rgba(99,102,241,0.15) !important;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg,#6366f1,#8b5cf6) !important;
+  color: white !important;
+  box-shadow: 0 8px 25px rgba(99,102,241,0.45) !important;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(99,102,241,0.55) !important;
+}
+
+/* ============================
+    COLUMNAS KANBAN
+============================= */
+
+.board-column {
+  background: #11131a !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  border-radius: 16px !important;
+  padding: 1rem !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.55) !important;
+}
+
+.board-column__title {
+  color: #ffffff !important;
+}
+
+.board-column__text {
+  color: #cbd5e1 !important;
+}
+
+/* ============================
+     DIALOG / MODAL TAREAS
+============================= */
+
+.mat-dialog-container {
+  background: #11131a !important;
+  color: #e5e7eb !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+.mat-option {
+  background: #11131a !important;
+  color: #fff !important;
+}
+
+.mat-select-value {
+  color: #fff !important;
+}
+
+/* Form fields in dialogs */
+.mat-dialog-container .mat-form-field {
+  background: #11131a !important;
+}
+
+.mat-dialog-container .mat-form-field .mat-input-element {
+  background: #1a1a1a !important;
+  color: #ffffff !important;
+  border: 1px solid #333 !important;
+  border-radius: 6px !important;
+  padding: 0.5rem !important;
+}
+
+.mat-dialog-container .mat-form-field .mat-placeholder,
+.mat-dialog-container .mat-form-field .mat-hint,
+.mat-dialog-container .mat-form-field-label {
+  color: #ffffff !important;
+}
+
+.task-modal mat-hint,
+.task-modal mat-error {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+.task-modal .form-section {
+  margin-bottom: 1.5rem !important;
+  padding: 1rem !important;
+}
+
+.task-modal .section-title {
+  margin-bottom: 1rem !important;
+  font-size: 1.2rem !important;
+}
+
+.mat-dialog-container .mat-select-panel {
+  background: #11131a !important;
+  border: 1px solid #333 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+}
+
+.mat-dialog-container .mat-option {
+  color: #ffffff !important;
+  padding: 1rem 1.5rem !important;
+}
+
+.mat-dialog-container .mat-option:hover {
+  background: #1a1a1a !important;
+}
+
+.mat-dialog-container .mat-option mat-icon {
+  font-size: 0 !important;
+}
+
+.task-modal .status-option mat-icon {
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  visibility: hidden !important;
+  font-size: 0 !important;
+}
+
+.mat-dialog-container .mat-select-trigger {
+  background: #1a1a1a !important;
+  color: #ffffff !important;
+  border: 1px solid #333 !important;
+  border-radius: 6px !important;
+}
+
+.mat-dialog-container .mat-select-trigger .mat-icon {
+  display: none !important;
+}
+
+/* Override task dialog specific styles */
+.task-modal,
+.task-modal mat-dialog-container {
+  background: #11131a !important;
+}
+
+.task-modal .form-section {
+  background: #1a1c23 !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+.task-modal .modal-header,
+.task-modal .modal-title,
+.task-modal .modal-subtitle {
+  background: #11131a !important;
+  color: #ffffff !important;
+}
+
+.task-modal .section-title {
+  color: #ffffff !important;
+}
+
+.task-modal header {
+  background: #11131a !important;
+}
+
+.task-modal .modal-footer {
+  background: #11131a !important;
+  border-top: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+.task-modal .modal-footer button {
+  background: #1a1a1a !important;
+  color: #ffffff !important;
+  border: 1px solid #333 !important;
+}
+
+.task-modal .modal-footer .submit-button {
+  background: linear-gradient(135deg, #7b5cff, #9c7bff) !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* ============================
+   FIX UNIVERSAL DARK MODE
+============================= */
+
+/* Ocultar texto de mat-icon en botones y search */
+button mat-icon,
+.search-icon {
+  font-size: 0 !important;
+}
+
+app-root,
+router-outlet + *,
+.mat-drawer-container,
+.mat-drawer-content,
+.mat-sidenav-content,
+.page-container,
+.main-content {
+  background: #000000 !important;
+  color: #e5e7eb !important;
+}

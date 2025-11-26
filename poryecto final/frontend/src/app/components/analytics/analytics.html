@@ -1,0 +1,86 @@
+<section class="analytics">
+  <header class="analytics__header">
+    <div>
+      <h2>Análisis</h2>
+      <p class="text-muted">Resumen general de tu actividad en Kanban.</p>
+    </div>
+  </header>
+
+  <div class="analytics__grid">
+    <article class="analytics-card">
+      <h3>Tasa de completación</h3>
+      <p class="analytics-card__value">{{ completionRate }}%</p>
+      <p class="text-muted">
+        {{ completedTasks }} de {{ totalTasks }} tareas completadas.
+      </p>
+    </article>
+
+    <article class="analytics-card">
+      <h3>Tareas activas</h3>
+      <p class="analytics-card__value">{{ activeTasks }}</p>
+      <p class="text-muted">
+        Tareas en progreso o pendientes.
+      </p>
+    </article>
+
+    <article class="analytics-card">
+      <h3>Productividad</h3>
+      <p class="analytics-card__value">{{ productivityScore }}%</p>
+      <p class="text-muted">
+        Eficiencia en la gestión de tareas.
+      </p>
+    </article>
+
+    <article class="analytics-card">
+      <h3>Promedio diario</h3>
+      <p class="analytics-card__value">{{ avgTasksPerDay }}</p>
+      <p class="text-muted">
+        Tareas gestionadas por día (última semana).
+      </p>
+    </article>
+  </div>
+
+  <!-- Gráfico circular interactivo -->
+  <div class="analytics__chart">
+    <h3>Distribución de tareas</h3>
+    <div class="chart-container">
+      <canvas baseChart
+              [data]="pieChartData"
+              [options]="pieChartOptions"
+              [type]="pieChartType">
+      </canvas>
+    </div>
+  </div>
+
+  <!-- Gráfico simple de distribución (como respaldo) -->
+  <div class="analytics__chart analytics__chart--simple">
+    <h3>Resumen visual</h3>
+    <div class="chart-container">
+      <!-- Leyenda arriba -->
+      <div class="chart-legend">
+        <div class="legend-item">
+          <span class="legend-color legend-color--todo"></span>
+          <span>{{ getTodoCount() }} Por hacer</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color legend-color--progress"></span>
+          <span>{{ getInProgressCount() }} En progreso</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color legend-color--done"></span>
+          <span>{{ getDoneCount() }} Completadas</span>
+        </div>
+      </div>
+
+      <!-- Barra del gráfico -->
+      <div class="chart-bar">
+        <div class="chart-bar__segment chart-bar__segment--todo"
+             [style.width.%]="getTodoPercentage()"></div>
+        <div class="chart-bar__segment chart-bar__segment--progress"
+             [style.width.%]="getInProgressPercentage()"></div>
+        <div class="chart-bar__segment chart-bar__segment--done"
+             [style.width.%]="getDonePercentage()"></div>
+      </div>
+    </div>
+  </div>
+</section>

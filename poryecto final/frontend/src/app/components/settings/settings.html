@@ -1,0 +1,55 @@
+<section class="settings">
+  <header class="settings__header">
+    <div>
+      <h2>Configuración</h2>
+      <p class="text-muted">Personaliza tu experiencia en KanbanFlow.</p>
+    </div>
+  </header>
+
+  <div class="settings__grid">
+    <article class="settings-card">
+      <div class="profile-info">
+        <div class="profile-avatar">{{ profile.avatar }}</div>
+        <div class="profile-details">
+          <h3>{{ profile.name }}</h3>
+          <p class="text-muted">{{ profile.email }}</p>
+        </div>
+      </div>
+      <p class="text-muted">
+        Configura tu información personal y preferencias.
+      </p>
+      <button class="btn-primary" (click)="editProfile()">Editar perfil</button>
+    </article>
+
+    <article class="settings-card">
+      <h3>Notificaciones</h3>
+      <div class="notification-status">
+        <div class="status-item">
+          <span class="status-dot" [class.active]="notifications.taskCompleted"></span>
+          <span>Tareas completadas</span>
+        </div>
+        <div class="status-item">
+          <span class="status-dot" [class.active]="notifications.taskOverdue"></span>
+          <span>Tareas vencidas</span>
+        </div>
+        <div class="status-item">
+          <span class="status-dot" [class.active]="notifications.dailySummary"></span>
+          <span>Resumen diario</span>
+        </div>
+        <div class="status-item">
+          <span class="status-dot" [class.active]="notifications.weeklyReport"></span>
+          <span>Reporte semanal</span>
+        </div>
+      </div>
+      <button class="btn-outline" (click)="configureNotifications()">Configurar</button>
+    </article>
+
+    <article class="settings-card">
+      <h3>Exportar datos</h3>
+      <p class="text-muted">
+        Descarga un respaldo de tus tareas en formato Excel.
+      </p>
+      <button class="btn-primary" (click)="exportData()">Exportar</button>
+    </article>
+  </div>
+</section>

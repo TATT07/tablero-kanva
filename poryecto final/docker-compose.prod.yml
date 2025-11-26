@@ -1,0 +1,49 @@
+services:
+  # Backend API
+  api:
+    image: tatt07/kanban-api:latest
+    ports:
+      - "8080:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:80
+      - Jwt__Key=mi-clave-jwt-super-secreta-cambiar-en-produccion-123456789
+      - Jwt__Issuer=http://api
+      - ConnectionStrings__DefaultConnection=Host=db;Database=KanbanDb;Username=postgres;Password=YourStrong!Passw0rd
+    depends_on:
+      - db
+    networks:
+      - kanban-network
+
+  # Frontend
+  frontend:
+    image: tatt07/kanban-frontend:latest
+    ports:
+      - "4200:80"
+    environment:
+      - API_URL=http://api:80
+    depends_on:
+      - api
+    networks:
+      - kanban-network
+
+  # Database
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=KanbanDb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=YourStrong!Passw0rd
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - kanban-network
+
+volumes:
+  postgres_data:
+
+networks:
+  kanban-network:
+    driver: bridge

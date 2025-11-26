@@ -1,0 +1,54 @@
+services:
+  api:
+    container_name: kanban-api
+    build:
+      context: .
+      dockerfile: Kanban.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Host=kanban-db;Port=5432;Database=KanbanDb;Username=postgres;Password=postgres123
+    depends_on:
+      - db
+    ports:
+      - "5000:80"
+    restart: always
+    networks:
+      - kanban-network
+
+  frontend:
+    container_name: kanban-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    environment:
+      - API_URL=${API_URL}
+    depends_on:
+      - api
+    ports:
+      - "80:80"
+    restart: always
+    networks:
+      - kanban-network
+
+  db:
+    container_name: kanban-db
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=KanbanDb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - kanban-network
+
+volumes:
+  postgres_data:
+
+networks:
+  kanban-network:
+    driver: bridge

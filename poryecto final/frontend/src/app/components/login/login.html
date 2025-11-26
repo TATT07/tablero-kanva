@@ -1,0 +1,45 @@
+<div class="login-page">
+  <div class="login-card">
+    <header class="login-card__header">
+      <div class="login-logo">vi</div>
+      <div>
+        <h1>KanbanFlow</h1>
+        <p class="text-muted">Inicia sesión para gestionar tu tablero Kanban</p>
+      </div>
+    </header>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <div class="login-form__field">
+        <label>Correo electrónico</label>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="tu@ejemplo.com"
+        />
+      </div>
+
+      <div class="login-form__field">
+        <label>Contraseña</label>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="••••••••"
+        />
+      </div>
+
+      <button class="btn-primary full-width" type="submit" [disabled]="loginForm.invalid || isLoading">
+        {{ isLoading ? 'Iniciando sesión…' : 'Iniciar sesión' }}
+      </button>
+
+      <p class="login-error" *ngIf="errorMessage">{{ errorMessage }}</p>
+    </form>
+
+    <footer class="login-footer">
+      <p class="text-muted">
+        Usa la cuenta del docente para revisión:
+        <br />
+        <strong>doc_js_galindo@fesc.edu.co</strong> / <strong>0123456789</strong>
+      </p>
+    </footer>
+  </div>
+</div>

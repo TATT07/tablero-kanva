@@ -1,0 +1,24 @@
+<div class="user-card">
+  <div class="user-card__content">
+    <div class="user-card__name">
+      {{ getUserDisplayName() }}
+    </div>
+    <div class="user-card__email">
+      {{ currentUser()?.email }}
+    </div>
+    <div class="user-card__role">
+      {{ getUserRoleDisplay() }}
+    </div>
+  </div>
+
+  <button
+    mat-stroked-button
+    class="user-card__logout-btn"
+    (click)="logout()"
+    matTooltip="Cerrar sesión"
+    [matTooltipPosition]="'right'"
+  >
+    <mat-icon class="logout-icon">logout</mat-icon>
+    <span class="logout-text">Cerrar sesión</span>
+  </button>
+</div>

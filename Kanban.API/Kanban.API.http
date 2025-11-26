@@ -1,0 +1,16 @@
+@Kanban.API_HostAddress = http://localhost:8080
+
+GET {{Kanban.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+POST {{Kanban.API_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "doc_js_galindo@fesc.edu.co",
+  "password": "0123456789"
+}
+
+###

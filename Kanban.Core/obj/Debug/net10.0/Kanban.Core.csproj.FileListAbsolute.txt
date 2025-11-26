@@ -1,0 +1,12 @@
+c:\Users\TATO\Downloads\poryecto final\Kanban.Core\obj\Debug\net10.0\Kanban.Core.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\TATO\Downloads\poryecto final\Kanban.Core\obj\Debug\net10.0\Kanban.Core.AssemblyInfoInputs.cache
+c:\Users\TATO\Downloads\poryecto final\Kanban.Core\obj\Debug\net10.0\Kanban.Core.AssemblyInfo.cs
+c:\Users\TATO\Downloads\poryecto final\Kanban.Core\obj\Debug\net10.0\Kanban.Core.csproj.CoreCompileInputs.cache
+c:\Users\TATO\Downloads\poryecto final\Kanban.Core\obj\Debug\net10.0\Kanban.Core.sourcelink.json
+c:\Users\TATO\Downloads\poryecto final\Kanban.Core\bin\Debug\net10.0\Kanban.Core.deps.json
+c:\Users\TATO\Downloads\poryecto final\Kanban.Core\bin\Debug\net10.0\Kanban.Core.dll
+c:\Users\TATO\Downloads\poryecto final\Kanban.Core\bin\Debug\net10.0\Kanban.Core.pdb
+c:\Users\TATO\Downloads\poryecto final\Kanban.Core\obj\Debug\net10.0\Kanban.Core.dll
+c:\Users\TATO\Downloads\poryecto final\Kanban.Core\obj\Debug\net10.0\refint\Kanban.Core.dll
+c:\Users\TATO\Downloads\poryecto final\Kanban.Core\obj\Debug\net10.0\Kanban.Core.pdb
+c:\Users\TATO\Downloads\poryecto final\Kanban.Core\obj\Debug\net10.0\ref\Kanban.Core.dll

@@ -1,0 +1,370 @@
+/* Task Dialog Header */
+.task-dialog-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+}
+
+.task-dialog-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-glow);
+  animation: pulse 2s infinite;
+
+  mat-icon {
+    font-size: 28px;
+    color: white;
+  }
+}
+
+.task-dialog-title-section {
+  flex: 1;
+}
+
+.task-dialog-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.task-dialog-subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Form Sections */
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-section {
+  background: #111111;
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s ease;
+}
+
+.form-section:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+.form-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--primary-soft);
+}
+
+.section-icon {
+  color: var(--primary);
+  font-size: 20px;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.half-width {
+  grid-column: span 1;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+/* Form Fields */
+mat-form-field {
+  width: 100%;
+  margin-top: 8px !important;
+  margin-bottom: 18px !important;
+
+  .mat-mdc-form-field-outline {
+    color: var(--border-medium) !important;
+  }
+
+  .mat-mdc-form-field-focus-overlay {
+    background-color: transparent !important;
+  }
+
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__notch,
+  .mdc-notched-outline__trailing {
+    border-color: var(--border-medium) !important;
+    border-width: 2px !important;
+    border-radius: 6px !important;
+  }
+
+  .mdc-notched-outline--notched .mdc-notched-outline__notch {
+    border-top: none !important;
+  }
+
+  &.mat-focused .mdc-notched-outline__leading,
+  &.mat-focused .mdc-notched-outline__notch,
+  &.mat-focused .mdc-notched-outline__trailing {
+    border-color: var(--primary) !important;
+    border-width: 2px !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+  }
+
+  .mat-mdc-form-field-label {
+    color: var(--text-muted) !important;
+    margin-bottom: 6px !important;
+  }
+
+  .mat-mdc-form-field-required-marker {
+    color: var(--primary) !important;
+  }
+
+  .mdc-text-field--outlined .mdc-text-field__input {
+    padding: 12px 14px !important;
+    line-height: 1.5 !important;
+  }
+
+  textarea.mdc-text-field__input {
+    min-height: 100px !important;
+    resize: vertical !important;
+    padding: 12px 14px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* Dark Select Dropdown Styling for Create Task Modal */
+::ng-deep .mat-mdc-select-panel {
+  background: #1d1f24 !important;
+  border: 1px solid #3b3b3b !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+  margin-top: 4px !important;
+  max-height: 200px !important;
+  overflow-y: auto !important;
+  z-index: 1000 !important;
+  position: relative !important;
+}
+
+::ng-deep .mat-mdc-option {
+  color: #ffffff !important;
+  background: transparent !important;
+  padding: 12px 16px !important;
+  border-radius: 4px !important;
+  margin: 2px 4px !important;
+  transition: background-color 0.2s ease !important;
+}
+
+::ng-deep .mat-mdc-option:hover,
+::ng-deep .mat-mdc-option.mat-mdc-option-active {
+  background: #2b2e34 !important;
+  color: #ffffff !important;
+}
+
+::ng-deep .mat-mdc-option.mat-selected {
+  background: #6366f1 !important;
+  color: #ffffff !important;
+}
+
+::ng-deep .mat-mdc-option.mat-selected:hover {
+  background: #4f46e5 !important;
+}
+
+/* Ensure select trigger has proper styling */
+::ng-deep .mdc-select__anchor {
+  background: #11131a !important;
+  color: #ffffff !important;
+  border: 1px solid #3b3b3b !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+  min-height: 40px !important;
+}
+
+::ng-deep .mdc-select__selected-text {
+  color: #ffffff !important;
+}
+
+.title-field {
+  .mdc-text-field__input {
+    font-size: 1.1rem !important;
+    font-weight: 500 !important;
+  }
+}
+
+.field-icon {
+  color: var(--text-light) !important;
+  transition: color 0.3s ease;
+}
+
+mat-form-field.mat-focused .field-icon {
+  color: var(--primary) !important;
+}
+
+/* Status Options */
+.status-option {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.status-icon {
+  &.status-todo {
+    color: var(--secondary);
+  }
+
+  &.status-inprogress {
+    color: var(--accent-blue);
+  }
+
+  &.status-done {
+    color: var(--success);
+  }
+}
+
+/* Dialog Container */
+mat-dialog-container {
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-strong) !important;
+  backdrop-filter: blur(20px);
+  background: #1e1e1e !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 600px !important;
+  width: 90vw !important;
+}
+
+mat-dialog-content {
+  padding: 0 !important;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.task-dialog-content {
+  padding: 0 3rem 2rem 3rem;
+}
+
+/* Dialog Actions */
+.task-dialog-actions {
+  padding: 2rem !important;
+  justify-content: space-between !important;
+  background: #1a1a1a;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0 -2rem -2rem -2rem;
+}
+
+.cancel-btn {
+  background: #6b7280 !important;
+  border: 2px solid #6b7280 !important;
+  color: white !important;
+  transition: all 0.3s ease !important;
+
+  &:hover {
+    background: #4b5563 !important;
+    border-color: #4b5563 !important;
+    transform: translateY(-1px);
+  }
+}
+
+.submit-btn {
+  background: var(--primary-gradient) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: var(--shadow-glow) !important;
+  transition: all 0.3s ease !important;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  &:hover:not(:disabled)::before {
+    left: 100%;
+  }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.5) !important;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &.edit-mode {
+    background: #22c55e !important;
+  }
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .task-dialog-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .half-width,
+  .full-width {
+    grid-column: span 1;
+  }
+
+  mat-dialog-container {
+    width: 95vw !important;
+    margin: 1rem !important;
+  }
+
+  .task-dialog-content,
+  .task-dialog-actions {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}

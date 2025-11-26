@@ -1,0 +1,116 @@
+.task-detail-modal {
+  background: #1a1c23;
+  color: #ffffff;
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    .header-icon {
+      mat-icon {
+        font-size: 32px;
+        width: 32px;
+        height: 32px;
+        color: #3b82f6;
+      }
+    }
+
+    .header-content {
+      .modal-title {
+        margin: 0 0 4px 0;
+        font-size: 24px;
+        font-weight: 500;
+        color: #ffffff;
+      }
+
+      .modal-subtitle {
+        margin: 0;
+        font-size: 14px;
+        color: #cbd5e1;
+      }
+    }
+  }
+
+  .modal-body {
+    .task-details {
+      .detail-section {
+        margin-bottom: 24px;
+
+        .section-title {
+          margin: 0 0 16px 0;
+          font-size: 16px;
+          font-weight: 500;
+          color: #ffffff;
+        }
+
+        .detail-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+
+          .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+
+            label {
+              font-size: 12px;
+              font-weight: 500;
+              color: #cbd5e1;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+            }
+
+            span {
+              font-size: 14px;
+              color: #ffffff;
+              padding: 8px 12px;
+              background: #11131a;
+              border: 1px solid rgba(255,255,255,0.08);
+              border-radius: 6px;
+              min-height: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+
+    .cancel-button {
+      color: #cbd5e1 !important;
+
+      mat-icon {
+        margin-right: 8px;
+      }
+
+      &:hover {
+        background-color: rgba(255,255,255,0.05) !important;
+      }
+    }
+
+    .edit-button {
+      background-color: #3b82f6 !important;
+      color: #ffffff !important;
+
+      mat-icon {
+        margin-right: 8px;
+      }
+
+      &:hover {
+        background-color: #2563eb !important;
+      }
+    }
+  }
+}

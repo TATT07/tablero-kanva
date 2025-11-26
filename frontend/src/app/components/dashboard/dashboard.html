@@ -1,0 +1,188 @@
+<section class="dashboard-page">
+
+  <!-- 🔷 BLOQUE 1: ENCABEZADO -->
+  <div class="dashboard-block">
+    <header class="dashboard-header">
+      <div class="header-text">
+        <h1 class="dashboard-title">Panel de Control</h1>
+        <p class="dashboard-subtitle">
+          Resumen general del estado de tus tareas.
+        </p>
+      </div>
+
+      <div class="dashboard-header__actions">
+        <!-- Acciones del dashboard -->
+      </div>
+    </header>
+  </div>
+
+  <!-- 🔷 BLOQUE 2: MÉTRICAS -->
+  <div class="dashboard-block">
+    <section class="metrics-grid">
+
+      <!-- Total de tareas -->
+      <article class="metric-card">
+        <div class="metric-card__icon metric-card__icon--total">
+          <span>TOTAL</span>
+        </div>
+        <div class="metric-card__content">
+          <span class="metric-card__label">TOTAL DE TAREAS</span>
+          <span class="metric-card__value">{{ totalTasks }}</span>
+          <p class="metric-card__description">Todas las tareas registradas</p>
+        </div>
+      </article>
+
+      <!-- Por hacer -->
+      <article class="metric-card">
+        <div class="metric-card__icon metric-card__icon--todo">
+          <span>HACER</span>
+        </div>
+        <div class="metric-card__content">
+          <span class="metric-card__label">POR HACER</span>
+          <span class="metric-card__value metric-card__value--amber">
+            {{ todoCount }}
+          </span>
+          <p class="metric-card__description">Pendientes por iniciar</p>
+        </div>
+      </article>
+
+      <!-- En progreso -->
+      <article class="metric-card">
+        <div class="metric-card__icon metric-card__icon--progress">
+          <span>PROGRESO</span>
+        </div>
+        <div class="metric-card__content">
+          <span class="metric-card__label">EN PROGRESO</span>
+          <span class="metric-card__value metric-card__value--blue">
+            {{ inProgressCount }}
+          </span>
+          <p class="metric-card__description">Actualmente en progreso</p>
+        </div>
+      </article>
+
+      <!-- Completadas -->
+      <article class="metric-card">
+        <div class="metric-card__icon metric-card__icon--done">
+          <span>HECHO</span>
+        </div>
+        <div class="metric-card__content">
+          <span class="metric-card__label">COMPLETADAS</span>
+          <span class="metric-card__value metric-card__value--green">
+            {{ doneCount }}
+          </span>
+          <p class="metric-card__description">Tareas finalizadas</p>
+        </div>
+      </article>
+
+    </section>
+  </div>
+
+  <!-- 🔷 BLOQUE 3: PROGRESO DEL PROYECTO -->
+  <div class="dashboard-block">
+    <header class="board-card__header">
+      <div>
+        <h2 class="board-card__title">Progreso del Proyecto</h2>
+        <p class="board-card__subtitle">
+          Visualiza el estado general y eficiencia de tu trabajo.
+        </p>
+      </div>
+
+      <div class="export-actions">
+        <button class="btn-export btn-export--pdf" (click)="exportTasksToPdf()">
+          <mat-icon>picture_as_pdf</mat-icon>
+          Exportar PDF
+        </button>
+
+        <button class="btn-export btn-export--excel" (click)="exportTasksToExcel()">
+          <mat-icon>grid_on</mat-icon>
+          Exportar Excel
+        </button>
+
+        <button class="btn-primary" (click)="createNewTask()">
+          <mat-icon>add</mat-icon>
+          Crear Nueva Tarea
+        </button>
+      </div>
+    </header>
+
+    <div class="progress-overview">
+      <!-- Gráfico de progreso -->
+      <div class="progress-chart">
+        <div class="chart-container">
+          <canvas
+            baseChart
+            [data]="doughnutChartData"
+            [options]="doughnutChartOptions"
+            [type]="'doughnut'">
+          </canvas>
+
+          <!-- Center text overlay -->
+          <div class="chart-center-text">
+            <div class="center-number">{{ totalTasks }}</div>
+            <div class="center-label">Total Tareas</div>
+          </div>
+        </div>
+
+        <!-- Custom Legend -->
+        <div class="chart-legend">
+          <div class="legend-item">
+            <div class="legend-color" style="background-color: #f4a300;"></div>
+            <span class="legend-text">Por Hacer: {{ todoCount }}</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background-color: #1e6cff;"></div>
+            <span class="legend-text">En Progreso: {{ inProgressCount }}</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background-color: #1eca8c;"></div>
+            <span class="legend-text">Completadas: {{ doneCount }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gestión de Tareas -->
+      <div class="task-management" *ngIf="tasks.length > 0">
+        <h3>Gestión Rápida de Tareas</h3>
+        <div class="task-grid">
+          <div class="task-card" *ngFor="let task of tasks">
+            <div class="task-header">
+              <h4>{{ task.title }}</h4>
+              <button class="delete-btn" (click)="deleteTask(task)" title="Eliminar tarea">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+            <p *ngIf="task.description" class="task-description">{{ task.description }}</p>
+            <div class="task-actions">
+              <select
+                [value]="task.status"
+                (change)="changeTaskStatus(task, $event)"
+                class="status-select"
+              >
+                <option value="0">📝 Por Hacer</option>
+                <option value="1">▶️ En Progreso</option>
+                <option value="2">✅ Completada</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="no-tasks" *ngIf="tasks.length === 0">
+        <mat-icon>assignment</mat-icon>
+        <p>No tienes tareas aún</p>
+        <button class="btn-primary" (click)="createNewTask()">Crear Primera Tarea</button>
+      </div>
+
+      <!-- Mensaje motivacional -->
+      <div class="motivation-card" *ngIf="doneCount > 0">
+        <mat-icon>celebration</mat-icon>
+        <div>
+          <h4>¡Excelente trabajo!</h4>
+          <p>Has completado {{ doneCount }} tareas. ¡Sigue así!</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
